@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hiring Tracker — Video Editor</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Jost:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
   :root {
     --bg: #f0eeeb;
@@ -21,9 +21,9 @@
     --blue: #3a5c8c;
     --purple: #6b4d8a;
     --email: #2d6b5a;
-    --mono: 'DM Mono', monospace;
-    --sans: 'Jost', sans-serif;
-    --display: 'Playfair Display', serif;
+    --mono: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --sans: Helvetica, Arial, sans-serif;
+    --display: Helvetica, Arial, sans-serif;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: var(--bg); color: var(--text); font-family: var(--sans); min-height: 100vh; }
@@ -43,7 +43,7 @@
     font-weight: 600;
     letter-spacing: -0.3px;
     color: var(--text);
-    font-family: var(--display);
+    font-family: Helvetica, Arial, sans-serif;
   }
   .header-left p {
     font-size: 13px;
@@ -134,7 +134,7 @@
     font-size: 14px;
     vertical-align: middle;
   }
-  .candidate-name { font-weight: 600; color: var(--text); font-family: var(--display); font-size: 15px; letter-spacing: 0.1px; }
+  .candidate-name { font-weight: 600; color: var(--text); font-family: Helvetica, Arial, sans-serif; font-size: 15px; letter-spacing: 0.1px; }
   .candidate-email { font-size: 12px; color: var(--muted); font-family: var(--mono); margin-top: 2px; }
   .date-text { font-family: var(--mono); font-size: 12px; color: var(--muted); }
 
@@ -160,15 +160,15 @@
   .badge.emailed    { background: rgba(45,107,90,0.08);  border-color: rgba(45,107,90,0.25);  color: var(--email); }
 
   /* ACTION BUTTONS */
-  .actions { display: flex; gap: 6px; }
+  .actions { display: flex; gap: 4px; flex-wrap: wrap; max-width: 180px; }
   .btn {
-    padding: 5px 12px;
+    padding: 4px 9px;
     border-radius: 6px;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 600;
     border: 1px solid;
     cursor: pointer;
-    font-family: var(--sans);
+    font-family: Helvetica, Arial, sans-serif;
     transition: all 0.15s;
     white-space: nowrap;
   }
@@ -243,7 +243,7 @@
   .btn-confirm.red { background: var(--red); border-color: var(--red); color: white; }
 
   /* NOTES COLUMN */
-  .notes-text { font-size: 12px; color: var(--muted); max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .notes-text { font-size: 11px; color: var(--muted); max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .interview-time { font-family: var(--mono); font-size: 12px; color: var(--blue); }
 
   /* EMPTY STATE */
@@ -287,7 +287,7 @@
         <th>Interview</th>
         <th>Portfolio</th>
         <th>Notes</th>
-        <th>Actions</th>
+        <th style="width:180px">Actions</th>
       </tr>
     </thead>
     <tbody id="table-body"></tbody>
