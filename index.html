@@ -459,20 +459,13 @@ function openCV(id) {
     // Locally uploaded file takes priority
     showCVFile(stored);
   } else if (c.cvUrl) {
-    // Load directly from GitHub
-    const frame = document.getElementById('cv-frame');
-    const empty = document.getElementById('cv-empty');
-    empty.style.display = 'none';
-    frame.style.display = 'block';
-    // PDF viewer via Google Docs for cross-origin PDFs
-    if (c.cvUrl.endsWith('.pdf')) {
-      frame.src = 'https://docs.google.com/viewer?url=' + encodeURIComponent(c.cvUrl) + '&embedded=true';
-    } else if (c.cvUrl.endsWith('.docx')) {
-      frame.src = 'https://docs.google.com/viewer?url=' + encodeURIComponent(c.cvUrl) + '&embedded=true';
+    // Open CV directly in new tab via Google Docs viewer
+    closeCV();
+    if (c.cvUrl.match(/\.(pdf|docx|doc)$/i)) {
+      window.open('https://docs.google.com/viewer?url=' + encodeURIComponent(c.cvUrl), '_blank');
     } else {
-      frame.src = c.cvUrl;
+      window.open(c.cvUrl, '_blank');
     }
-    document.getElementById('cv-indicator').style.display = 'block';
   } else {
     // No CV at all
     document.getElementById('cv-frame').style.display = 'none';
@@ -501,12 +494,9 @@ function handleCVUpload(event) {
 }
 
 function showCVFile(stored) {
-  const frame = document.getElementById('cv-frame');
-  const empty = document.getElementById('cv-empty');
-  empty.style.display = 'none';
-  frame.style.display = 'block';
-  frame.src = stored.url;
-  document.getElementById('cv-indicator').style.display = 'block';
+  // Open in new tab — clean, no iframe issues
+  window.open(stored.url, '_blank');
+  closeCV();
 }
 
 function closeCV() {
